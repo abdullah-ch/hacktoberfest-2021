@@ -51,7 +51,7 @@ bool solveMaze(int maze[N][N])
 	return true;
 }
 
-/* A recursive utility function to solve Maze problem */
+// A recursive utility function to solve Maze problem
 bool solveMazeUtil(
 	int maze[N][N], int x,
 	int y, int sol[N][N])
@@ -73,7 +73,7 @@ bool solveMazeUtil(
 		// mark x, y as part of solution path
 		sol[x][y] = 1;
 
-		/* Move forward in x direction */
+		// Move forward in x direction
 		if (solveMazeUtil(
 				maze, x + 1, y, sol)
 			== true)
