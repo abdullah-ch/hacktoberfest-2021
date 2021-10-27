@@ -2,8 +2,7 @@
 #include <stdio.h>
 
 // Maze size
-#define N 4
-
+#define N
 bool solveMazeUtil(
 	int maze[N][N], int x,
 	int y, int sol[N][N]);
