@@ -52,7 +52,6 @@ bool solveMaze(int maze[N][N])
 }
 
 /* A recursive utility function to solve Maze problem */
-
 bool solveMazeUtil(
 	int maze[N][N], int x,
 	int y, int sol[N][N])
