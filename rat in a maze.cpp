@@ -100,10 +100,11 @@ bool solveMazeUtil(
 // driver program to test above function
 int main()
 {
-	int maze[N][N] = { { 1, 0, 0, 0 },
+	//Driver function
+	int maze[N][N] = { { 0, 0, 1, 0 },
 					{ 1, 1, 0, 1 },
 					{ 0, 1, 0, 0 },
-					{ 1, 1, 1, 1 } };
+					{ 1, 0, 1, 1 } };
 
 	solveMaze(maze);
 	return 0;
