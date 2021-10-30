@@ -1,5 +1,8 @@
 /* C++ program to solve Rat in  a Maze problem using backtracking */
 #include <stdio.h>
+#include <iostream>
+
+using namespace std;
 
 // Maze size
 #define N
@@ -74,15 +77,11 @@ bool solveMazeUtil(
 		sol[x][y] = 1;
 
 		// Move forward in x direction
-		if (solveMazeUtil(
-				maze, x + 1, y, sol)
-			== true)
+		if solveMazeUtil(maze, x + 1, y, sol)
 			return true;
 
 		/* If moving in x direction doesn't give solution then Move down in y direction */
-		if (solveMazeUtil(
-				maze, x, y + 1, sol)
-			== true)
+		if solveMazeUtil(maze, x, y + 1, sol)
 			return true;
 	
 		/* If none of the above movements
@@ -98,10 +97,11 @@ bool solveMazeUtil(
 // driver program to test above function
 int main()
 {
-	int maze[N][N] = { { 1, 0, 0, 0 },
-					{ 1, 1, 0, 1 },
-					{ 0, 1, 0, 0 },
-					{ 1, 1, 1, 1 } };
+	int maze[N][N] = { { 1, 0, 0, 0, 0 },
+					{ 1, 1, 0, 1, 0 },
+					{ 0, 1, 0, 0, 1 },
+					{ 1, 1, 1, 1, 0 },
+					{ 1, 0, 0, 1, 1} };
 
 	solveMaze(maze);
 	return 0;
