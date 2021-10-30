@@ -1,20 +1,20 @@
-/* C++ program to solutionve Rat in  a Maze problem using backtracking */
+/* C++ program to solve Rat in  a Maze problem using backtracking */
 #include <stdio.h>
 #include <iostream>
 using namespace std;
 
 // Maze size
 #define N
-bool solutionveMazeUtil(
+bool solveMazeUtil(
 	int maze[N][N], int x,
-	int y, int solution[N][N]);
+	int y, int sol[N][N]);
 
-/* A utility function to print solutionution matrix solution[N][N] */
-void printsolutionution(int solution[N][N])
+/* A utility function to print sol matrix sol[N][N] */
+void printsol(int sol[N][N])
 {
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++)
-			printf(" %d ", solution[i][j]);
+			printf(" %d ", sol[i][j]);
 		printf("\n");
 	}
 }
@@ -33,7 +33,7 @@ bool isSafe(int maze[N][N], int x, int y)
 
 /* This function solves the Maze problem using Backtracking. It mainly uses solveMazeUtil() to solve the problem.
 It returns false if no path is possible, otherwise return true and prints the path in the form of 1s. Please note that there
-may be more than one solutions, this function prints one of the feasible solutions.*/
+may be more than one sols, this function prints one of the feasible sols.*/
 
 bool solveMaze(int maze[N][N])
 {
@@ -45,11 +45,11 @@ bool solveMaze(int maze[N][N])
 	if (solveMazeUtil(
 			maze, 0, 0, sol)
 		== 0) {
-		printf("Solution doesn't exist");
+		printf("sol doesn't exist");
 		return 0;
 	}
 
-	printSolution(sol);
+	printsol(sol);
 	return 1;
 }
 
@@ -62,35 +62,35 @@ bool solveMazeUtil(
 	if (
 		x == N - 1 && y == N - 1
 		&& maze[x][y] == 1) {
-		solution[x][y] = 1;
+		sol[x][y] = 1;
 		return 1;
 	}
 
 	// Check if maze[x][y] is valid
 	if (isSafe(maze, x, y) == 1) {
-		// Check if the current block is already part of solutionution path.
-		if (solution[x][y] == 1)
+		// Check if the current block is already part of sol path.
+		if (sol[x][y] == 1)
 			return false;
 	
-		// mark x, y as part of solutionution path
-		solution[x][y] = 1;
+		// mark x, y as part of sol path
+		sol[x][y] = 1;
 
 		// Move forward in x direction
-		if (solutionveMazeUtil(
-				maze, x + 1, y, solution)
+		if (solveMazeUtil(
+				maze, x + 1, y, sol)
 			== 1)
 			return 1;
 
-		/* If moving in x direction doesn't give solutionution then Move down in y direction */
-		if (solutionveMazeUtil(
-				maze, x, y + 1, solution)
+		/* If moving in x direction doesn't give sol then Move down in y direction */
+		if (solveMazeUtil(
+				maze, x, y + 1, sol)
 			== true)
 			return 1;
 	
 		/* If none of the above movements
 		work then BACKTRACK: unmark
-		x, y as part of solutionution path */
-		solution[x][y] = 0;
+		x, y as part of sol path */
+		sol[x][y] = 0;
 		return 0;
 	}
 
@@ -106,6 +106,6 @@ int main()
 					{ 0, 1, 0, 0 },
 					{ 1, 0, 1, 1 } };
 
-	solutionveMaze(maze);
+	solveMaze(maze);
 	return 0;
 }
