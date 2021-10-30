@@ -26,9 +26,9 @@ bool isSafe(int maze[N][N], int x, int y)
 	if (
 		x >= 0 && x < N && y >= 0
 		&& y < N && maze[x][y] == 1)
-		return true;
+		return 1;
 
-	return false;
+	return 0;
 }
 
 /* This function solves the Maze problem using Backtracking. It mainly uses solveMazeUtil() to solve the problem.
@@ -44,13 +44,13 @@ bool solveMaze(int maze[N][N])
 
 	if (solveMazeUtil(
 			maze, 0, 0, sol)
-		== false) {
+		== 0) {
 		printf("Solution doesn't exist");
-		return false;
+		return 0;
 	}
 
 	printSolution(sol);
-	return true;
+	return 1;
 }
 
 // A recursive utility function to solve Maze problem
@@ -63,11 +63,11 @@ bool solveMazeUtil(
 		x == N - 1 && y == N - 1
 		&& maze[x][y] == 1) {
 		sol[x][y] = 1;
-		return true;
+		return 1;
 	}
 
 	// Check if maze[x][y] is valid
-	if (isSafe(maze, x, y) == true) {
+	if (isSafe(maze, x, y) == 1) {
 		// Check if the current block is already part of solution path.
 		if (sol[x][y] == 1)
 			return false;
@@ -78,23 +78,23 @@ bool solveMazeUtil(
 		// Move forward in x direction
 		if (solveMazeUtil(
 				maze, x + 1, y, sol)
-			== true)
-			return true;
+			== 1)
+			return 1;
 
 		/* If moving in x direction doesn't give solution then Move down in y direction */
 		if (solveMazeUtil(
 				maze, x, y + 1, sol)
 			== true)
-			return true;
+			return 1;
 	
 		/* If none of the above movements
 		work then BACKTRACK: unmark
 		x, y as part of solution path */
 		sol[x][y] = 0;
-		return false;
+		return 0;
 	}
 
-	return false;
+	return 0;
 }
 
 // driver program to test above function
